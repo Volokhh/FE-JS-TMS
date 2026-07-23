@@ -21,15 +21,15 @@ console.log(myAgeInSeconds);
 let count = 42
 let userName = '42'
 
-let countString1 = String(count)
-let countString2 = '' + count
+const countString1 = String(count)
+const countString2 = '' + count
 
 console.log(countString1, typeof countString1);
 console.log(countString2, typeof countString2);
 
 
-let userNameNumber1 = +userName
-let userNameNumber2 = Number(userName)
+const userNameNumber1 = +userName
+const userNameNumber2 = Number(userName)
 
 console.log(userNameNumber1, typeof userNameNumber1);
 console.log(userNameNumber2, typeof userNameNumber2);
@@ -43,13 +43,13 @@ let c = 'белых медведей'
 console.log('' + a + b + ' ' + c);
 
 // Задача 5
-let a6 = 'доступ'
-let b6 = 'морпех'
-let c6 = 'наледь'
-let d = 'попрек'
-let f = 'рубило'
+const aTask5 = 'доступ'
+const bTask5 = 'морпех'
+const cTask5 = 'наледь'
+const d = 'попрек'
+const f = 'рубило'
 
-console.log(a6.length + b6.length + c6.length + d.length + f.length);
+console.log(aTask5.length + bTask5.length + cTask5.length + d.length + f.length);
 
 
 // Задача 6
@@ -57,9 +57,9 @@ let logged = true
 let userNumber = 7
 let userSecondName = 'Pupkin'
 
-let loggedType = (typeof logged)
-let userNumberType = (typeof userNumber)
-let userSecondNameType = (typeof userSecondName)
+const loggedType = (typeof logged)
+const userNumberType = (typeof userNumber)
+const userSecondNameType = (typeof userSecondName)
 
 
 console.log(`Variable: logged have type: ${loggedType}`);
@@ -68,8 +68,8 @@ console.log(`Variable: userSecondName have type: ${userSecondNameType}`);
 
 
 // Задача 7
-let userNamePrompt = prompt('Enter your name')
-let userAgePrompt = prompt('Enter your age')
+const userNamePrompt = prompt('Enter your name')
+const userAgePrompt = prompt('Enter your age')
 
 console.log('User name is', userNamePrompt);
 console.log('User age is', userAgePrompt);
@@ -79,10 +79,11 @@ console.log('User age is', userAgePrompt);
 let aTask1 = 4
 let bTask1 = 3
 
-aTask1--;
-console.log('variable a =', aTask1);
+let cTask1 = aTask1
+aTask1 = bTask1
+bTask1 = cTask1
 
-bTask1++;
+console.log('variable a =', aTask1);
 console.log('variable b =', bTask1);
 
 
@@ -93,5 +94,5 @@ let codeWord3 = "огурцы";
 let codeWord4 = "липкие";
 let codeWord5 = "?!";
 
-let cipher = codeWord1[1] + codeWord2[1] + codeWord3[1] + codeWord4[1] + codeWord5[1];
+const cipher = codeWord1[1] + codeWord2[1] + codeWord3[1] + codeWord4[1] + codeWord5[1];
 console.log(cipher);

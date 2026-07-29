@@ -63,7 +63,7 @@ const userAge = prompt('How old are you?')
 
 if (userAge >= 18) {
    console.log('попей пивка');
-} else if (16 <= userAge && userAge <= 18) {
+} else if (userAge >= 16) {
    console.log('Можешь выкурить сигаретку, только маме не говори.');
 } else {
    console.log('Пей колу');
@@ -71,8 +71,9 @@ if (userAge >= 18) {
 
 // Задача 7
 const userDirection = prompt('Which direction do you want to go?')
+let userDirectionLowerCase = userDirection.trim().toLowerCase()
 
-switch (userDirection) {
+switch (userDirectionLowerCase) {
    case 'юг':
       console.log('на юг пойдешь счастье найдешь');
       break;
@@ -115,9 +116,9 @@ console.log((userNumber - userSubtract + userSum) * userMult / userDiv);
 
 
 // Задача 3*
-let resultTask3 = '#';
-console.log(resultTask3);
-for (let i = 0; i <= 4; i++) {
+let resultTask3 = '';
+
+for (let i = 0; i <= 5; i++) {
    resultTask3 += '#';
    console.log(resultTask3);
 }

@@ -29,8 +29,11 @@ calculateOverpayments(10000)
 
 // Задача 3
 function trimString(string, from, to) {
+   let result = '';
+   for (let i = [from]; i < [to]; i++) {
+      result += string[i];
 
-   const result = string.slice(from, to);
+   }
    console.log(result);
    return result
 }
@@ -45,7 +48,7 @@ function getSumNumbers() {
 
 
    while (userNumber) {
-      sumNumbers += userNumber % 10; //Привет! почему, когда я это срока шла после userNumber = Math.floor(userNumber / 10);, функция работала некорректно?
+      sumNumbers += userNumber % 10;
       userNumber = Math.floor(userNumber / 10);
    }
    console.log(sumNumbers);
@@ -85,3 +88,57 @@ function boo() {
 }
 
 fooBoo(false, foo, boo)
+
+
+// Задача 1*
+function isTrianglePossible() {
+   const aTask1 = Math.floor(+prompt('Enter the length of side a'));
+   const bTask1 = Math.floor(+prompt('Enter the length of side b'));
+   const cTask1 = Math.floor(+prompt('Enter the length of side c'));
+
+   if (aTask1 + bTask1 > cTask1 && aTask1 + cTask1 > bTask1 && bTask1 + cTask1 > aTask1) {
+      console.log('true');
+      return true
+
+   } else {
+      console.log('false');
+      return false
+   }
+}
+
+isTrianglePossible()
+
+
+// Задача 3*
+function calculateTaxes(priceWithoutTax) {
+   const taxRate = 13
+   return priceWithoutTax + priceWithoutTax * (taxRate / 100);
+}
+function formattingPrice(priceWithTax) {
+   return priceWithTax.toLocaleString('en-US') + '.00';
+}
+
+function calculatePhonePrice() {
+   const phonePrice = 800
+   const accessoryPrice = 100
+   const priceWithoutTaxPerPhone = phonePrice + accessoryPrice;
+   const priceWithTaxPerPhone = calculateTaxes(phonePrice + accessoryPrice);
+
+
+   let balance = +prompt('Enter your bank account balance');
+   let phoneCount = 0;
+   let totalPayments = 0;
+
+   while (balance >= priceWithTaxPerPhone) {
+      totalPayments += priceWithTaxPerPhone;
+      balance -= priceWithTaxPerPhone;
+      phoneCount++;
+   }
+
+   const formattedPrice = formattingPrice(totalPayments);
+
+   console.log(`Сумма покупки ${phoneCount} телефонов c учетом налогов равняется ${formattedPrice}`);
+
+}
+
+calculatePhonePrice()

@@ -30,7 +30,7 @@ calculateOverpayments(10000)
 // Задача 3
 function trimString(string, from, to) {
    let result = '';
-   for (let i = [from]; i < [to]; i++) {
+   for (let i = from; i < to; i++) {
       result += string[i];
 
    }

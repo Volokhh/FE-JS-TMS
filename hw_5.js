@@ -88,3 +88,39 @@ if (user.login === userValidateLoginLowerCase && user.password === userValidateP
 } else {
    alert('Incorrect login or password((');
 }
+
+
+// Задача 1* -> нужна подсказка
+
+
+// Задача 2*
+
+let student1 = {
+   name: 'Polina',
+   age: 27,
+}
+let student2 = {
+   name: 'Polina',
+   age: 27,
+}
+
+const student1String = student1.toString()
+const student2String = student2.toString()
+
+console.log(student1String === student2String);
+
+
+// Задача 3*
+
+const animals = {
+   cat: {
+      name: 'Енчик',
+      age: 3,
+   },
+   dog: {
+      name: 'Орео',
+      age: 2,
+   }
+}
+
+console.log(animals?.bird);

@@ -90,11 +90,33 @@ if (user.login === userValidateLoginLowerCase && user.password === userValidateP
 }
 
 
-// Задача 1* -> нужна подсказка
+// Задача 1* 
+const team1 = +prompt('Сколько мячей забила первая команда?');
+const team2 = +prompt('Сколько мячей забила вторая команда?');
+
+function fixedScore(a, b) {
+
+   const score = {
+      0: 'ноль',
+      1: 'один',
+      2: 'два',
+      3: 'три',
+      4: 'четыре',
+      5: 'пять',
+      6: 'шесть',
+      7: 'семь',
+      8: 'восемь',
+      9: 'девять'
+   };
+
+   const result = `${score[a]} : ${score[b]}`
+   console.log(result);
+}
+
+fixedScore(team1, team2)
 
 
 // Задача 2*
-
 let student1 = {
    name: 'Polina',
    age: 27,
@@ -103,11 +125,23 @@ let student2 = {
    name: 'Polina',
    age: 27,
 }
+let countKey1 = 0;
+let countKey2 = 0;
 
-const student1String = student1.toString()
-const student2String = student2.toString()
+for (let key in student1) {
+   countKey1++;
+}
 
-console.log(student1String === student2String);
+for (let key in student2) {
+   countKey2++;
+}
+
+if (countKey1 !== countKey2) {
+   console.log('false');
+} else {
+   console.log('true');
+}
+
 
 
 // Задача 3*

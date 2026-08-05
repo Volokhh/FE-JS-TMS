@@ -24,11 +24,14 @@ console.log(numbers.slice(0, 0));
 
 const students = ['Polina', 'Dasha', 'Masha']
 
-const studentsCopy1 = students.slice(0, 2)
-const studentsCopy2 = studentsCopy1.push("Borya")
-const studentsCopy3 = studentsCopy1.shift()
-const studentsCopy4 = studentsCopy1.unshift('Andrey')
-console.log(studentsCopy1);
+let studentsCopy = students.slice();
+
+studentsCopy.pop();
+studentsCopy.push("Borya");
+studentsCopy.shift();
+studentsCopy.unshift('Andrey');
+
+console.log(studentsCopy);
 
 
 // Задача 5
@@ -63,33 +66,16 @@ console.log(binary.join(1));
 
 // Задача 1*
 
-function checkPalindrome() {
-   const words = ['потоп', 'потом', 'топот']
+//function checkPalindrome() {
+//   const words = ['потоп', 'потом', 'топот']
 
-   for (let i = 0; i < words.length; i++) {
-
-      const wordsReverse = words[i].split('').reverse().join('');
-      //console.log(wordsReverse);
-      if (words[i] === wordsReverse) {
-         console.log(`${words[i]} is palindrome`);
-      } else {
-         console.log(`${words[i]} is not palindrome`);
-      }
-   }
+//   for (let i = 0; i < words.length; i++) {
 
 
-   for (const word of words) {
-      const wordReverse = word.split('').reverse().join('');
+//   }
+//}
 
-      if (word === wordReverse) {
-         console.log(`${word} is palindrome`);
-      } else {
-         console.log(`${word} is not palindrome`);
-      }
-   }
-}
-
-checkPalindrome()
+//checkPalindrome()
 
 
 // Задача 2*
@@ -106,11 +92,14 @@ let matrixLength = 0;
 
 for (array of matrix) {
 
-   // нужна помощь (・_・ヾ
-
+   for (item of array) {
+      sumOfNumbers += item
+   }
+   matrixLength += array.length
 }
-
-console.log(sumOfNumbers / matrixLength);
+//console.log(sumOfNumbers);
+//console.log(matrixLength);
+console.log(`Среднее значение чисел в многомерном массиве = ${sumOfNumbers / matrixLength}`);
 
 
 // Задача 3*
@@ -133,19 +122,15 @@ console.log(negativeNumbers);
 
 // Задача 4*
 
-function getRandomInt(min, max) {
-   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 let arr = [];
 let arrCube = [];
 
 for (let i = 0; i < 6; i++) {
-   arr.push(getRandomInt(1, 100)); // как создать массив из рандомных чисел, нашла на просторах интернета 
+   arr.push(Math.floor(Math.random() * 10));
 }
 
 for (num of arr) {
-   arrCube.push(num * num * num);
+   arrCube.push(num ** 3);
 }
 
 console.log(arr);

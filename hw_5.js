@@ -88,3 +88,74 @@ if (user.login === userValidateLoginLowerCase && user.password === userValidateP
 } else {
    alert('Incorrect login or password((');
 }
+
+
+// Задача 1* 
+const team1 = +prompt('Сколько мячей забила первая команда?');
+const team2 = +prompt('Сколько мячей забила вторая команда?');
+const score = {
+   0: 'ноль',
+   1: 'один',
+   2: 'два',
+   3: 'три',
+   4: 'четыре',
+   5: 'пять',
+   6: 'шесть',
+   7: 'семь',
+   8: 'восемь',
+   9: 'девять'
+};
+
+function fixedScore(a, b) {
+   const result = `${score[a]} : ${score[b]}`
+   console.log(result);
+}
+
+fixedScore(team1, team2)
+
+
+// Задача 2*
+let student1 = {
+   name: 'Polina',
+   age: 27,
+}
+let student2 = {
+   name: 'Polina',
+   age: 27,
+}
+const keys1 = Object.keys(student1);
+const keys2 = Object.keys(student2);
+let areEqual = true;
+
+if (keys1.length !== keys2.length) {
+   console.log('false');
+} else {
+   for (let key of keys1) {
+      if (!student2.hasOwnProperty(key) || student1[key] !== student2[key]) {
+         areEqual = false;
+         break;
+      }
+   }
+}
+if (areEqual === true) {
+   console.log('true');
+} else {
+   console.log('false');
+}
+
+
+
+// Задача 3*
+
+const animals = {
+   cat: {
+      name: 'Енчик',
+      age: 3,
+   },
+   dog: {
+      name: 'Орео',
+      age: 2,
+   }
+}
+
+console.log(animals?.bird);

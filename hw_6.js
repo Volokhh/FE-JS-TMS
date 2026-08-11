@@ -66,16 +66,21 @@ console.log(binary.join(1));
 
 // Задача 1*
 
-//function checkPalindrome() {
-//   const words = ['потоп', 'потом', 'топот']
+function isPalindrome(str) {
+   for (let i = 0; i < str.length; i++) {
+      const charA = str[i];
+      const charB = str[str.length - 1 - i];
 
-//   for (let i = 0; i < words.length; i++) {
+      if (charA !== charB) {
+         return false;
+      }
+      if (i >= str.length - 1 - i) {
+         return true;
+      }
+   }
+}
 
-
-//   }
-//}
-
-//checkPalindrome()
+console.log(isPalindrome('шалаш'));
 
 
 // Задача 2*

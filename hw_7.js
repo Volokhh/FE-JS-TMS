@@ -105,15 +105,16 @@ console.log(totalSumOfCredit);
 
 
 // Задача 2*
-//let protectionFromTrolls = (string) => {
-//   stringLowerCase = string.toLowerCase()
-//   const arr = stringLowerCase.split('');
-//   let arrNew = arr.filter((elem) => elem !== 'a' && elem !== 'e' && elem !== 'i' && elem !== 'o');
-//   const res = arrNew.join('');
-//   return res
-//}
+const vowels = ['a', 'e', 'i', 'o']
 
-//console.log(protectionFromTrolls('This website is for losers LOL!'));
+let protectionFromTrolls = (string) => {
+   const arr = string.split('');
+   let arrNew = arr.filter((elem) => !vowels.includes(elem.toLowerCase()));
+   const res = arrNew.join('');
+   return res
+}
+
+console.log(protectionFromTrolls('This website is for losers LOL!'));
 
 // Задача 3*
 //let formattedStr = (str) => {
@@ -133,25 +134,25 @@ console.log(totalSumOfCredit);
 //console.log(highAndLow('1 9 3 4 -5'));
 
 // Задача 5*
-//let checkIsogram = (str) => {
-//   const strLowerCase = str.toLowerCase()
-//   const arr = strLowerCase.split('');
-//   const arrRes = arr.some((char, index) => strLowerCase.indexOf(char) !== index);
-//   if (arrRes === true) {
-//      console.log(`${str} is not Isogram`);
-//   } else {
-//      console.log(`${str} is Isogram`);
-//   }
-//};
+let checkIsogram = (str) => {
+   const strLowerCase = str.toLowerCase()
+   const arr = strLowerCase.split('');
+   const checkResult = arr.some((char, index) => strLowerCase.indexOf(char) !== index);
+   if (checkResult === true) {
+      console.log(`${str} is not Isogram`);
+   } else {
+      console.log(`${str} is Isogram`);
+   }
+};
 
-//checkIsogram('miumiu')
+checkIsogram('miumiu')
 
 // Задача 7*
 let changeStr = (str) => {
    const strLowerCase = str.toLowerCase()
    const arr = strLowerCase.split('');
    const arrRes = arr.reduce((acc, char, index) => {
-      if (strLowerCase.indexOf(char) !== index) {
+      if (strLowerCase.indexOf(char) !== strLowerCase.lastIndexOf(char)) {
          return acc += ')';
       } else {
          return acc += '(';
@@ -161,4 +162,3 @@ let changeStr = (str) => {
 };
 
 console.log(changeStr('recede'));
-// тут у меня задача полностью не выполнена, тк первый неуникальный символ не меняется на ) , нужна подсказка

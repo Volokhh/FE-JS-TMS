@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.todo__btn-add, .todo__btn-delete {
+  display: block;
+  margin: 0 auto;
+  padding: 14px 0;
+  color: rgb(4, 91, 4);
+  background-color: rgb(22, 241, 219);
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  border: 3px solid black;
+  border-radius: 10px;
+}
+
+.todo {
+  padding: 70px 0;
+  background-color: rgb(239, 233, 252);
+  text-align: center;
+  min-height: 100vh;
+}
+.todo__container {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 20px 60px;
+  border: 3px solid black;
+  border-radius: 10px;
+  background-color: rgb(207, 207, 207);
+}
+.todo__options {
+  padding: 30px 0 30px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  -moz-column-gap: 15px;
+       column-gap: 15px;
+  margin-bottom: 20px;
+}
+.todo__btn-delete {
+  min-width: 210px;
+}
+.todo__btn-add {
+  min-width: 210px;
+}
+.todo__task-content {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  border: 3px solid black;
+  border-radius: 10px;
+  color: rgb(44, 40, 40);
+  resize: none;
+}
+.todo__task-content::-moz-placeholder {
+  font-family: "Raleway", sans-serif;
+  color: rgb(193, 189, 189);
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  padding: 14px 0;
+}
+.todo__task-content::placeholder {
+  font-family: "Raleway", sans-serif;
+  color: rgb(193, 189, 189);
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  padding: 14px 0;
+}
+.todo__item {
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 0 15px;
+  margin-bottom: 20px;
+}
+.todo__task-wrapper {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: start;
+}
+.todo__item-text {
+  background-color: white;
+  border-radius: 10px;
+  color: gray;
+  padding: 23px 0;
+  font-weight: 400;
+  flex-basis: 550px;
+  margin-top: 20px;
+}
+.todo__item-done {
+  width: 80px;
+  height: 50px;
+  color: rgb(4, 91, 4);
+  background-color: rgb(22, 241, 219);
+  border: 3px solid black;
+  border-radius: 10px;
+  font-size: 20px;
+  margin: 20px 20px 5px 0;
+  padding: 3px 18px;
+}
+.todo__item-delete {
+  width: 80px;
+  height: 50px;
+  color: rgb(4, 91, 4);
+  background-color: rgb(22, 241, 219);
+  border: 3px solid black;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 3px 20px;
+  margin-left: auto;
+}
+.todo__item-date {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 7px 0;
+  max-width: 150px;
+  margin-left: auto;
+  color: rgb(49, 52, 53);
+  background-color: rgb(253, 253, 253);
+  border-radius: 10px;
+  margin-top: -15px;
+  margin-bottom: 15px;
+}

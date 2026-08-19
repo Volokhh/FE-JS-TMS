@@ -125,28 +125,28 @@ const btnItemDelete2 = createDomElement('button', {
 const date2 = dateBlock();
 
 
-options.appendChild(btnDelete);
-options.appendChild(taskContent);
-options.appendChild(btnAdd);
+options.append(btnDelete);
+options.append(taskContent);
+options.append(btnAdd);
 
-taskWrapper.appendChild(btnDone);
-taskWrapper.appendChild(itemText);
-taskWrapper.appendChild(btnItemDelete);
+taskWrapper.append(btnDone);
+taskWrapper.append(itemText);
+taskWrapper.append(btnItemDelete);
 
-item.appendChild(taskWrapper);
-item.appendChild(date);
+item.append(taskWrapper);
+item.append(date);
 
-taskWrapper2.appendChild(btnDone2);
-taskWrapper2.appendChild(itemText2);
-taskWrapper2.appendChild(btnItemDelete2);
+taskWrapper2.append(btnDone2);
+taskWrapper2.append(itemText2);
+taskWrapper2.append(btnItemDelete2);
 
-item2.appendChild(taskWrapper2);
-item2.appendChild(date2);
+item2.append(taskWrapper2);
+item2.append(date2);
 
-container.appendChild(options);
-container.appendChild(item);
-container.appendChild(item2);
+container.append(options);
+container.append(item);
+container.append(item2);
 
-todo.appendChild(container);
+todo.append(container);
 
-root.appendChild(todo);
+root.append(todo);

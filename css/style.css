@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
   margin: 0;
@@ -101,6 +102,9 @@ body {
   margin-top: 20px;
 }
 .todo__item-done {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   width: 80px;
   height: 50px;
   color: rgb(4, 91, 4);
@@ -110,6 +114,23 @@ body {
   font-size: 20px;
   margin: 20px 20px 5px 0;
   padding: 3px 18px;
+  position: relative;
+}
+.todo__item-done::after {
+  content: "✔";
+  position: absolute;
+  top: 2px;
+  left: 27px;
+  width: 0px;
+  height: 0px;
+  font-size: 26px;
+  transition: 500ms;
+  overflow: hidden;
+}
+.todo__item-done:checked::after {
+  width: 30px;
+  height: 30px;
+  transition: 500ms;
 }
 .todo__item-delete {
   width: 80px;

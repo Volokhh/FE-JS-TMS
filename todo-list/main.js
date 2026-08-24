@@ -43,6 +43,42 @@ const dateBlock = () => {
    return date;
 };
 
+const createTask = () => {
+   const item = createDomElement('div', {
+      className: 'todo__item',
+   });
+   const taskWrapper = createDomElement('div', {
+      className: 'todo__task-wrapper'
+   });
+
+   const btnDone = createDomElement('input', {
+      className: 'todo__item-done',
+      //value: '\u2713',
+      type: 'checkbox',
+   });
+
+   const itemText = createDomElement('p', {
+      className: 'todo__item-text',
+      textContent: 'Todo text'
+   });
+
+   const btnItemDelete = createDomElement('button', {
+      className: 'todo__item-delete',
+      textContent: '\u0078',
+   });
+
+   const date = dateBlock();
+
+   taskWrapper.append(btnDone);
+   taskWrapper.append(itemText);
+   taskWrapper.append(btnItemDelete);
+
+   item.append(taskWrapper);
+   item.append(date);
+
+   return item;
+}
+
 const todo = createDomElement('div', {
    className: 'todo',
 });
@@ -74,78 +110,14 @@ const items = createDomElement('div', {
    className: 'todo__items',
 });
 
-const item = createDomElement('div', {
-   className: 'todo__item',
-});
-
-const taskWrapper = createDomElement('div', {
-   className: 'todo__task-wrapper'
-});
-
-const btnDone = createDomElement('input', {
-   className: 'todo__item-done',
-   //value: '\u2713',
-   type: 'checkbox',
-});
-
-const itemText = createDomElement('p', {
-   className: 'todo__item-text',
-   textContent: 'Todo text'
-});
-
-const btnItemDelete = createDomElement('button', {
-   className: 'todo__item-delete',
-   textContent: '\u0078',
-});
-
-const date = dateBlock();
-
-const item2 = createDomElement('div', {
-   className: 'todo__item',
-});
-
-const taskWrapper2 = createDomElement('div', {
-   className: 'todo__task-wrapper'
-});
-
-const btnDone2 = createDomElement('input', {
-   className: 'todo__item-done',
-   //value: '\u2713',
-   type: 'checkbox',
-});
-
-const itemText2 = createDomElement('p', {
-   className: 'todo__item-text',
-   textContent: 'Todo text'
-});
-
-const btnItemDelete2 = createDomElement('button', {
-   className: 'todo__item-delete',
-   textContent: '\u0078',
-});
-
-const date2 = dateBlock();
-
+const item1 = createTask();
+const item2 = createTask();
 
 options.append(btnDelete);
 options.append(taskContent);
 options.append(btnAdd);
 
-taskWrapper.append(btnDone);
-taskWrapper.append(itemText);
-taskWrapper.append(btnItemDelete);
-
-item.append(taskWrapper);
-item.append(date);
-
-taskWrapper2.append(btnDone2);
-taskWrapper2.append(itemText2);
-taskWrapper2.append(btnItemDelete2);
-
-item2.append(taskWrapper2);
-item2.append(date2);
-
-items.append(item);
+items.append(item1);
 items.append(item2);
 
 container.append(options);
@@ -155,6 +127,7 @@ todo.append(container);
 
 root.append(todo);
 
+
 btnAdd.addEventListener('click', () => {
 
    const itemText = taskContent.value;
@@ -163,38 +136,7 @@ btnAdd.addEventListener('click', () => {
       return;
    }
 
-   const newItem = createDomElement('div', {
-      className: 'todo__item',
-   });
-
-   const newTaskWrapper = createDomElement('div', {
-      className: 'todo__task-wrapper'
-   });
-
-   const newBtnDone = createDomElement('input', {
-      className: 'todo__item-done',
-      //value: '\u2713',
-      type: 'checkbox',
-   });
-
-   const newItemText = createDomElement('p', {
-      className: 'todo__item-text',
-      textContent: itemText
-   });
-
-   const newBtnItemDelete = createDomElement('button', {
-      className: 'todo__item-delete',
-      textContent: '\u0078',
-   });
-
-   const newDate = dateBlock();
-
-   newTaskWrapper.append(newBtnDone);
-   newTaskWrapper.append(newItemText);
-   newTaskWrapper.append(newBtnItemDelete);
-
-   newItem.append(newTaskWrapper);
-   newItem.append(newDate);
+   const newItem = createTask()
 
    items.append(newItem);
 

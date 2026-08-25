@@ -103,6 +103,8 @@ font-weight: 400;
    }
 
    &__item-done {
+      appearance: none;
+      
       width: 80px;
       height: 50px;
       color: rgb(4, 91, 4);
@@ -111,8 +113,27 @@ font-weight: 400;
       border-radius: 10px;
       font-size: 20px;
       margin: 20px 20px 5px 0;
-      padding: 3px 18px; 
+      padding: 3px 18px;
+      position: relative;
    }
+
+   &__item-done::after{
+      content: "\2714";
+      position: absolute;
+      top: 2px;
+      left: 27px;
+      width: 0px;
+      height: 0px;
+      font-size: 26px;
+      transition: 500ms;
+      overflow: hidden;
+   }
+
+   &__item-done:checked::after {
+      width: 30px;
+      height: 30px;
+      transition: 500ms;
+}
 
    &__item-delete {
       width: 80px;

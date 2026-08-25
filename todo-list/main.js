@@ -43,23 +43,23 @@ const dateBlock = () => {
    return date;
 };
 
-const createTask = () => {
+const createTask = (text) => {
    const item = createDomElement('div', {
       className: 'todo__item',
    });
+
    const taskWrapper = createDomElement('div', {
       className: 'todo__task-wrapper'
    });
 
    const btnDone = createDomElement('input', {
       className: 'todo__item-done',
-      //value: '\u2713',
       type: 'checkbox',
    });
 
    const itemText = createDomElement('p', {
       className: 'todo__item-text',
-      textContent: 'Todo text'
+      textContent: text
    });
 
    const btnItemDelete = createDomElement('button', {
@@ -110,15 +110,9 @@ const items = createDomElement('div', {
    className: 'todo__items',
 });
 
-const item1 = createTask();
-const item2 = createTask();
-
 options.append(btnDelete);
 options.append(taskContent);
 options.append(btnAdd);
-
-items.append(item1);
-items.append(item2);
 
 container.append(options);
 container.append(items);
@@ -126,7 +120,6 @@ container.append(items);
 todo.append(container);
 
 root.append(todo);
-
 
 btnAdd.addEventListener('click', () => {
 
@@ -136,11 +129,12 @@ btnAdd.addEventListener('click', () => {
       return;
    }
 
-   const newItem = createTask()
+   const newItem = createTask(itemText)
 
    items.append(newItem);
+   taskContent.value = '';
 
-   taskContent.value = ' ';
+   currentState();
 });
 
 
@@ -156,6 +150,8 @@ btnDelete.addEventListener('click', () => {
    allItemsToDel.forEach((item) => {
       item.remove();
    });
+
+   setData([]);
 })
 
 
@@ -164,6 +160,8 @@ items.addEventListener('click', (e) => {
    if (e.target.classList.contains('todo__item-delete')) {
       const targetItemToDel = e.target.closest('.todo__item');
       targetItemToDel.remove();
+
+      currentState();
    };
 })
 
@@ -183,5 +181,91 @@ items.addEventListener('click', (e) => {
          targetItemToChange.style.backgroundColor = '';
          targetTextToChange.style.textDecoration = '';
       }
+
+      currentState();
    }
 })
+
+
+
+
+const todosLSKey = 'todos';
+
+const getData = () => {
+   const savedTodo = localStorage.getItem(todosLSKey);
+
+   if (!savedTodo) {
+      return [];
+   }
+
+   try {
+      return JSON.parse(savedTodo);
+   } catch (error) {
+      console.log('Parsing error:', error);
+      return [];
+   }
+};
+
+const setData = (todos) => {
+   localStorage.setItem(todosLSKey, JSON.stringify(todos));
+};
+
+
+let idCounter = Date.now();
+const generatedId = () => {
+   return idCounter++
+};
+
+const currentState = () => {
+   const todos = [];
+   const items = document.querySelectorAll('.todo__item');
+
+   items.forEach((item) => {
+      if (!item.dataset.id) {
+         item.dataset.id = generatedId();
+      }
+      const id = Number(item.dataset.id);
+      const date = item.querySelector('.todo__item-date').textContent;
+      const text = item.querySelector('.todo__item-text').textContent;
+      const isChecked = item.querySelector('.todo__item-done').checked;
+
+
+      todos.push({
+         id: id,
+         date: date,
+         text: text,
+         isChecked: isChecked
+      });
+   });
+   setData(todos)
+}
+
+
+const renderTodos = () => {
+
+   const todos = getData();
+
+   items.innerHTML = '';
+
+   todos.forEach(todo => {
+      const item = createTask(todo.text);
+
+      item.dataset.id = todo.id;
+
+      const checkbox = item.querySelector('.todo__item-done');
+      const text = item.querySelector('.todo__item-text');
+
+      checkbox.checked = todo.isChecked;
+
+      if (todo.isChecked) {
+         item.style.backgroundColor = 'rgb(173, 208, 179)';
+         text.style.textDecoration = 'line-through';
+      }
+
+      item.querySelector('.todo__item-date').textContent = todo.date;
+
+      items.append(item);
+   });
+};
+
+renderTodos();

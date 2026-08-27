@@ -43,6 +43,15 @@ const dateBlock = () => {
    return date;
 };
 
+const getFormattedDate = () => {
+   const now = new Date();
+   const day = String(now.getDate()).padStart(2, '0');
+   const month = String(now.getMonth() + 1).padStart(2, '0');
+   const year = now.getFullYear();
+
+   return `${day}.${month}.${year}`
+};
+
 const createTask = (text) => {
    const item = createDomElement('div', {
       className: 'todo__item',
@@ -121,6 +130,9 @@ todo.append(container);
 
 root.append(todo);
 
+
+
+
 btnAdd.addEventListener('click', () => {
 
    const itemText = taskContent.value;
@@ -134,7 +146,18 @@ btnAdd.addEventListener('click', () => {
    items.append(newItem);
    taskContent.value = '';
 
-   currentState();
+   const newTodo = {
+      id: generatedId(),
+      text: itemText,
+      date: getFormattedDate(),
+      isChecked: false,
+   }
+
+   todos.push(newTodo);
+
+   setData(todos)
+
+   renderTodos()
 });
 
 
@@ -145,46 +168,40 @@ btnDelete.addEventListener('click', () => {
       return;
    }
 
-   const allItemsToDel = document.querySelectorAll('.todo__item');
+   todos = [];
 
-   allItemsToDel.forEach((item) => {
-      item.remove();
-   });
-
-   setData([]);
-})
+   setData(todos)
+   renderTodos()
+});
 
 
 items.addEventListener('click', (e) => {
 
    if (e.target.classList.contains('todo__item-delete')) {
       const targetItemToDel = e.target.closest('.todo__item');
-      targetItemToDel.remove();
+      const idTargetItemToDel = Number(targetItemToDel.dataset.id);
 
-      currentState();
-   };
-})
+      todos = todos.filter((todo) => todo.id !== idTargetItemToDel)
+
+      setData(todos)
+
+      renderTodos()
+   }
+});
 
 items.addEventListener('click', (e) => {
 
    if (e.target.classList.contains('todo__item-done')) {
-      const targetItemToChange = e.target.closest('.todo__item');
-      const targetTextToChange = targetItemToChange.querySelector('.todo__item-text');
+      const idTargetItemToChange = Number(e.target.closest('.todo__item').dataset.id);
+      const todo = todos.find((todo) => todo.id === idTargetItemToChange);
 
-
-
-      if (e.target.checked) {
-         targetItemToChange.style.backgroundColor = 'rgb(173, 208, 179)';
-         targetTextToChange.style.textDecoration = 'line-through';
-
-      } else {
-         targetItemToChange.style.backgroundColor = '';
-         targetTextToChange.style.textDecoration = '';
+      if (todo) {
+         todo.isChecked = e.target.checked;
+         setData(todos)
+         renderTodos()
       }
-
-      currentState();
    }
-})
+});
 
 
 
@@ -216,36 +233,15 @@ const generatedId = () => {
    return idCounter++
 };
 
-const currentState = () => {
-   const todos = [];
-   const items = document.querySelectorAll('.todo__item');
-
-   items.forEach((item) => {
-      if (!item.dataset.id) {
-         item.dataset.id = generatedId();
-      }
-      const id = Number(item.dataset.id);
-      const date = item.querySelector('.todo__item-date').textContent;
-      const text = item.querySelector('.todo__item-text').textContent;
-      const isChecked = item.querySelector('.todo__item-done').checked;
-
-
-      todos.push({
-         id: id,
-         date: date,
-         text: text,
-         isChecked: isChecked
-      });
-   });
-   setData(todos)
-}
+let todos = [];
+const savedTodos = getData();
+todos = savedTodos;
 
 
 const renderTodos = () => {
-
-   const todos = getData();
-
    items.innerHTML = '';
+
+   const fragment = document.createDocumentFragment();
 
    todos.forEach(todo => {
       const item = createTask(todo.text);
@@ -264,8 +260,10 @@ const renderTodos = () => {
 
       item.querySelector('.todo__item-date').textContent = todo.date;
 
-      items.append(item);
+      fragment.append(item);
    });
+
+   items.append(fragment);
 };
 
 renderTodos();

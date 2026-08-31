@@ -43,23 +43,32 @@ const dateBlock = () => {
    return date;
 };
 
-const createTask = () => {
+const getFormattedDate = () => {
+   const now = new Date();
+   const day = String(now.getDate()).padStart(2, '0');
+   const month = String(now.getMonth() + 1).padStart(2, '0');
+   const year = now.getFullYear();
+
+   return `${day}.${month}.${year}`
+};
+
+const createTask = (text) => {
    const item = createDomElement('div', {
       className: 'todo__item',
    });
+
    const taskWrapper = createDomElement('div', {
       className: 'todo__task-wrapper'
    });
 
    const btnDone = createDomElement('input', {
       className: 'todo__item-done',
-      //value: '\u2713',
       type: 'checkbox',
    });
 
    const itemText = createDomElement('p', {
       className: 'todo__item-text',
-      textContent: 'Todo text'
+      textContent: text
    });
 
    const btnItemDelete = createDomElement('button', {
@@ -110,15 +119,9 @@ const items = createDomElement('div', {
    className: 'todo__items',
 });
 
-const item1 = createTask();
-const item2 = createTask();
-
 options.append(btnDelete);
 options.append(taskContent);
 options.append(btnAdd);
-
-items.append(item1);
-items.append(item2);
 
 container.append(options);
 container.append(items);
@@ -126,6 +129,8 @@ container.append(items);
 todo.append(container);
 
 root.append(todo);
+
+
 
 
 btnAdd.addEventListener('click', () => {
@@ -136,11 +141,23 @@ btnAdd.addEventListener('click', () => {
       return;
    }
 
-   const newItem = createTask()
+   const newItem = createTask(itemText)
 
    items.append(newItem);
+   taskContent.value = '';
 
-   taskContent.value = ' ';
+   const newTodo = {
+      id: generatedId(),
+      text: itemText,
+      date: getFormattedDate(),
+      isChecked: false,
+   }
+
+   todos.push(newTodo);
+
+   setData(todos)
+
+   renderTodos()
 });
 
 
@@ -151,37 +168,101 @@ btnDelete.addEventListener('click', () => {
       return;
    }
 
-   const allItemsToDel = document.querySelectorAll('.todo__item');
+   todos = [];
 
-   allItemsToDel.forEach((item) => {
-      item.remove();
-   });
-})
+   setData(todos)
+   renderTodos()
+});
 
 
 items.addEventListener('click', (e) => {
 
    if (e.target.classList.contains('todo__item-delete')) {
       const targetItemToDel = e.target.closest('.todo__item');
-      targetItemToDel.remove();
-   };
-})
+      const idTargetItemToDel = Number(targetItemToDel.dataset.id);
+
+      todos = todos.filter((todo) => todo.id !== idTargetItemToDel)
+
+      setData(todos)
+
+      renderTodos()
+   }
+});
 
 items.addEventListener('click', (e) => {
 
    if (e.target.classList.contains('todo__item-done')) {
-      const targetItemToChange = e.target.closest('.todo__item');
-      const targetTextToChange = targetItemToChange.querySelector('.todo__item-text');
+      const idTargetItemToChange = Number(e.target.closest('.todo__item').dataset.id);
+      const todo = todos.find((todo) => todo.id === idTargetItemToChange);
 
-
-
-      if (e.target.checked) {
-         targetItemToChange.style.backgroundColor = 'rgb(173, 208, 179)';
-         targetTextToChange.style.textDecoration = 'line-through';
-
-      } else {
-         targetItemToChange.style.backgroundColor = '';
-         targetTextToChange.style.textDecoration = '';
+      if (todo) {
+         todo.isChecked = e.target.checked;
+         setData(todos)
+         renderTodos()
       }
    }
-})
+});
+
+
+
+
+const todosLSKey = 'todos';
+
+const getData = () => {
+   const savedTodo = localStorage.getItem(todosLSKey);
+
+   if (!savedTodo) {
+      return [];
+   }
+
+   try {
+      return JSON.parse(savedTodo);
+   } catch (error) {
+      console.log('Parsing error:', error);
+      return [];
+   }
+};
+
+const setData = (todos) => {
+   localStorage.setItem(todosLSKey, JSON.stringify(todos));
+};
+
+
+let idCounter = Date.now();
+const generatedId = () => {
+   return idCounter++
+};
+
+let todos = [];
+todos = getData();
+
+
+const renderTodos = () => {
+   items.innerHTML = '';
+
+   const fragment = document.createDocumentFragment();
+
+   todos.forEach(todo => {
+      const item = createTask(todo.text);
+
+      item.dataset.id = todo.id;
+
+      const checkbox = item.querySelector('.todo__item-done');
+      const text = item.querySelector('.todo__item-text');
+
+      checkbox.checked = todo.isChecked;
+
+      if (todo.isChecked) {
+         item.style.backgroundColor = 'rgb(173, 208, 179)';
+         text.style.textDecoration = 'line-through';
+      }
+
+      item.querySelector('.todo__item-date').textContent = todo.date;
+
+      fragment.append(item);
+   });
+
+   items.append(fragment);
+};
+
+renderTodos();

@@ -234,8 +234,7 @@ const generatedId = () => {
 };
 
 let todos = [];
-const savedTodos = getData();
-todos = savedTodos;
+todos = getData();
 
 
 const renderTodos = () => {

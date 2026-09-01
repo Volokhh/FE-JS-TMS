@@ -1,27 +1,29 @@
 export const createDomElement = (tag, options) => {
    const newElement = document.createElement(tag)
 
-   if (options.className) {
+   const { className, textContent, placeholder, name, id, type } = options;
+
+   if (className) {
       newElement.classList.add(options.className)
    }
 
-   if (options.textContent) {
+   if (textContent) {
       newElement.textContent = options.textContent
    }
 
-   if (options.placeholder) {
+   if (placeholder) {
       newElement.placeholder = options.placeholder
    }
 
-   if (options.name) {
+   if (name) {
       newElement.name = options.name
    }
 
-   if (options.id) {
+   if (id) {
       newElement.id = options.id
    }
 
-   if (options.type) {
+   if (type) {
       newElement.type = options.type
    }
 

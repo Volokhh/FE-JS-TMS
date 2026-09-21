@@ -1,23 +1,17 @@
-
 const time = document.querySelector('.time');
 const timer = document.querySelector('.timer');
 const btnStart = document.getElementById("btnStart");
 const btnPause = document.getElementById("btnPause");
 
-function renderTime(text) {
-   time.innerHTML = text;
+function render(element, text) {
+   element.innerHTML = text;
 };
 
 setInterval(function showTime() {
-   const time = new Date();
+   const currentTime = new Date();
 
-   renderTime(time.toLocaleTimeString());
+   render(time, currentTime.toLocaleTimeString());
 }, 1000);
-
-
-function renderTimer(text) {
-   timer.innerHTML = text;
-};
 
 let seconds = 0;
 let timerId = null;
@@ -25,16 +19,17 @@ let timerId = null;
 function start() {
    if (timerId) {
       return
-   } else {
-      timerId = setInterval(function showTimer() {
-         seconds += 1;
-         renderTimer(seconds);
-      }, 1000);
    }
+
+   timerId = setInterval(function showTimer() {
+      seconds += 1;
+      render(timer, seconds + ' s');
+   }, 1000);
 }
 
 function pause() {
    clearInterval(timerId);
+   timerId = null;
 };
 
 btnStart.addEventListener('click', start);

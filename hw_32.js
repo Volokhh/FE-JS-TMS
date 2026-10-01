@@ -29,9 +29,8 @@ async function loadPosts() {
    })
    );
 
-   console.log(posts.forEach(post =>
-      console.log(post.id + ' ' + post.title)
-   ))
+   posts.forEach(post => console.log(post.id + ' ' + post.title))
 }
+
 loadPosts()
 

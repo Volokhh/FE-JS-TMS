@@ -118,11 +118,11 @@ console.log(filmsSortedByRating);
 // 4. Создать новый массив, где объекты фильмов будут состоять из следующих
 // полей:
 // id, title, released, plot
-function getNewArr(films) {
-    return films.map((item) => ({
+function getNewArr(items) {
+    return items.map((item) => ({
         id: item.id,
         title: item.title,
-        relesed: item.released,
+        released: item.released,
         plot: item.plot,
     }));
 }
@@ -132,8 +132,8 @@ console.log(newArr);
 // результатом этой функции должен быть отфильтрованный массив, с фильмами
 // где число равно году выхода фильма.
 const searchedYear = 2001;
-function getfilmsByYear(films, searchedYear) {
-    return films.filter((item) => item.year === searchedYear);
+function getfilmsByYear(items, elem) {
+    return items.filter((item) => item.year === elem);
 }
 const filmsSortedByYear = getfilmsByYear(films, searchedYear);
 console.log(`Массив с фильмами, где число равно году выхода фильма:`);
@@ -142,8 +142,8 @@ console.log(filmsSortedByYear);
 // результатом этой функции должен быть новый отфильтрованный массив, с
 // фильмами, где строка входит в название фильма.
 const searchedName = 'Harry Potter and the Deathly Hallows: Part 2';
-function getfilmsByName(films, searchedName) {
-    return films.filter((item) => item.title.toLowerCase() === searchedName.toLowerCase());
+function getfilmsByName(items, elem) {
+    return items.filter((item) => item.title.toLowerCase() === elem.toLowerCase());
 }
 const filmsSortedByName = getfilmsByName(films, searchedName);
 console.log(`Массив с фильмами, где строка входит в название фильма:`);
@@ -152,8 +152,8 @@ console.log(filmsSortedByName);
 // результатом этой функции должен быть отфильтрованный массив, с фильмами
 // где строка входит в название фильма или в его сюжет.
 const searchedString = "Harry, Ron, and Hermione search for Voldemort's remaining Horcruxes in their effort to destroy the Dark Lord as the final battle rages on at Hogwarts.";
-function getfilmsByString(films, searchedString) {
-    return films.filter((item) => item.title.toLowerCase() === searchedString.toLowerCase() || item.plot.toLowerCase() === searchedString.toLowerCase());
+function getfilmsByString(items, elem) {
+    return items.filter((item) => item.title.toLowerCase() === elem.toLowerCase() || item.plot.toLowerCase() === elem.toLowerCase());
 }
 const filmsSortedByString = getfilmsByString(films, searchedString);
 console.log('Массив с фильмами, где строка входит в название фильма или в его сюжет:');

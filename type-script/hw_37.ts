@@ -146,12 +146,12 @@ console.log(filmsSortedByRating)
 // 4. Создать новый массив, где объекты фильмов будут состоять из следующих
 // полей:
 // id, title, released, plot
-function getNewArr(films: Film[]) {
-   return films.map((item) =>
+function getNewArr<T extends Pick<Film, 'id' | 'title' | 'released' | 'plot'>>(items: T[]) {
+   return items.map((item) =>
    ({
       id: item.id,
       title: item.title,
-      relesed: item.released,
+      released: item.released,
       plot: item.plot,
    }))
 }
@@ -165,8 +165,8 @@ console.log(newArr)
 // где число равно году выхода фильма.
 const searchedYear = 2001
 
-function getfilmsByYear(films: Film[], searchedYear: number) {
-   return films.filter((item) => item.year === searchedYear)
+function getfilmsByYear<T extends Pick<Film, 'year'>, E extends number>(items: T[], elem: E) {
+   return items.filter((item) => item.year === elem)
 }
 
 const filmsSortedByYear = getfilmsByYear(films, searchedYear);
@@ -179,8 +179,8 @@ console.log(filmsSortedByYear)
 // фильмами, где строка входит в название фильма.
 const searchedName = 'Harry Potter and the Deathly Hallows: Part 2'
 
-function getfilmsByName(films: Film[], searchedName: string) {
-   return films.filter((item) => item.title.toLowerCase() === searchedName.toLowerCase())
+function getfilmsByName<T extends Pick<Film, 'title'>, E extends string>(items: T[], elem: E) {
+   return items.filter((item) => item.title.toLowerCase() === elem.toLowerCase())
 }
 
 const filmsSortedByName = getfilmsByName(films, searchedName);
@@ -193,8 +193,8 @@ console.log(filmsSortedByName)
 // где строка входит в название фильма или в его сюжет.
 const searchedString = "Harry, Ron, and Hermione search for Voldemort's remaining Horcruxes in their effort to destroy the Dark Lord as the final battle rages on at Hogwarts."
 
-function getfilmsByString(films: Film[], searchedString: string) {
-   return films.filter((item) => item.title.toLowerCase() === searchedString.toLowerCase() || item.plot.toLowerCase() === searchedString.toLowerCase())
+function getfilmsByString<T extends Pick<Film, 'title' | 'plot'>, E extends string>(items: T[], elem: E) {
+   return items.filter((item) => item.title.toLowerCase() === elem.toLowerCase() || item.plot.toLowerCase() === elem.toLowerCase())
 }
 
 const filmsSortedByString = getfilmsByString(films, searchedString);

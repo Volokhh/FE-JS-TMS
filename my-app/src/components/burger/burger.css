@@ -1,0 +1,10 @@
+.burger {
+   width: 60px;
+   height: 60px;
+   background-color: darkblue;
+   padding: 15px;
+   color: antiquewhite;
+   border-radius: 10px;
+   border: none;
+   cursor: pointer;
+}

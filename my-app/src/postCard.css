@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 .post { 
    border-bottom: 1px solid #e0e0e0; 
    padding-bottom: 12px; 
@@ -8,6 +11,7 @@
    font-size: 12px; 
    color: #888; 
    text-align: left;
+   font-family: 'Raleway';
 }
 
 .post__title { 
@@ -15,7 +19,7 @@
    font-weight: 700; 
    text-align: left;
    color: #000000; 
-
+   font-family: 'Raleway';
 }
 
 .post__text { 
@@ -23,6 +27,7 @@
    color: #999; 
    line-height: 1.5; 
    text-align: left;
+   font-family: 'Raleway';
 }
 
 .post__image { 

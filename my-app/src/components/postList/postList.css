@@ -2,8 +2,6 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 32px;
-  padding: 24px;
-  background: #f3f3f3;
 }
 
 .post-list__main {
@@ -13,7 +11,7 @@
 }
 
 .post-list__large {
-  grid-column: 1 / -1;   /* большая карточка на всю ширину */
+  grid-column: 1 / -1;   
 }
 
 .post-list__side {

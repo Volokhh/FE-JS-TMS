@@ -4,8 +4,8 @@ import { MediumPost } from './postCardMedium';
 import { SmallPost } from './postCardSmall';
 import '../../postCard.css';
 
-export const PostCard = ({ post, variant }: PostCardProps) => {
-   if (variant === 'large') return <LargePost post={post} />;
-   if (variant === 'medium') return <MediumPost post={post} />;
-   return <SmallPost post={post} />;
+export const PostCard = ({ post, variant, onOpen }: PostCardProps) => {
+   if (variant === 'large') return <LargePost post={post} onOpen={onOpen} />;
+   if (variant === 'medium') return <MediumPost post={post} onOpen={onOpen} />;
+   return <SmallPost post={post} onOpen={onOpen} />;
 };

@@ -1,5 +1,5 @@
 import './pages.css';
-import { Button } from '../components/header_elements/button';
+import { Button } from '../components/button/button';
 
 const Success = ({ onGoHome }: { onGoHome: () => void }) => (
    <div className="page page--narrow">

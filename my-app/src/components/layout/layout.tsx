@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { useState } from 'react';
-import { Burger } from '../header_elements/burger';
+import { Burger } from '../burger/burger';
 
 interface LayoutProps {
    children: ReactNode;

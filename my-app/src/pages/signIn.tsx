@@ -1,86 +1,9 @@
 
 import './pages.css';
-
 import { useRef, useState } from 'react';
-import type { ChangeEventHandler, RefObject, ReactNode } from 'react';
-import { Button } from '../components/header_elements/button';
+import { Input } from '../components/input/input';
+import { FormLayout } from '../components/formLayout/formLayout';
 
-
-const FormLayout = ({
-   content,
-   onClick,
-   buttonText,
-   additionalUI,
-   footerUI,
-}: {
-   content: ReactNode;
-   buttonText: string;
-   additionalUI: ReactNode;
-   footerUI?: ReactNode;
-   onClick: () => void;
-}) => {
-   const handleClick = (e: SubmitEvent) => {
-      e.preventDefault();
-      onClick();
-   };
-
-   return (
-      <div className='container'>
-         {content}
-         {additionalUI}
-         <Button
-            onClick={handleClick}
-            content={buttonText}
-            isActive
-            variant={'primary'}
-            type="submit"
-         />
-         {footerUI}
-      </div>
-   );
-};
-
-type InputType = 'text' | 'password' | 'email';
-
-type Props = {
-   label: string;
-   type?: InputType;
-   error?: string;
-   id: string;
-   placeholder: string;
-   disabled?: boolean;
-   value: string;
-   onChange: ChangeEventHandler<HTMLInputElement, HTMLInputElement>;
-   ref?: RefObject<HTMLInputElement | null>;
-};
-
-export const Input = ({
-   label,
-   type = 'text',
-   error,
-   id,
-   placeholder,
-   disabled,
-   value,
-   ref,
-   onChange,
-}: Props) => {
-   return (
-      <div className="field">
-         <label htmlFor={id}>{label}</label>
-         <input
-            ref={ref}
-            type={type}
-            id={id}
-            placeholder={placeholder}
-            disabled={disabled}
-            value={value}
-            onChange={onChange}
-         />
-         {error && <h3>{error}</h3>}
-      </div>
-   );
-};
 
 export const SignIn = ({ onSuccess }: { onSuccess: () => void }) => {
    const [email, setEmail] = useState('');
@@ -116,7 +39,7 @@ export const SignIn = ({ onSuccess }: { onSuccess: () => void }) => {
                <>
                   <Input
                      ref={inputEmailRef}
-                     label={'Email'}
+                     label={'email'}
                      id={'Email'}
                      placeholder={'Email'}
                      type="email"

@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { PostList } from '../components/postList/postList';
-import { Tabs } from '../components/tabs/tabs';
-import { Pagination } from '../components/pagination/pagination';
+import { PostList } from '../components/PostList/PostList';
+import { Tabs } from '../components/Tabs/Tabs';
+import { Pagination } from '../components/Pagination/Pagination';
 import './pages.css';
 
 const TABS = ['All', 'My favorites', 'Popular'];

@@ -1,5 +1,5 @@
 import { POSTS } from '../../constants.ts';
-import { PostCard } from '../postCard/postCard.tsx';
+import { PostCard } from '../PostCard/PostCard.tsx';
 import './PostList.css';
 
 interface PostListProps {

@@ -1,8 +1,8 @@
 
 import './pages.css';
 import { useRef, useState } from 'react';
-import { Input } from '../components/input/input';
-import { FormLayout } from '../components/formLayout/formLayout';
+import { Input } from '../components/Input/Input';
+import { FormLayout } from '../components/FormLayout/FormLayout';
 
 
 export const SignIn = ({ onSuccess }: { onSuccess: () => void }) => {

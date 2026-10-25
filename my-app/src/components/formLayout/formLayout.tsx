@@ -1,5 +1,5 @@
 
-import { Button } from '../button/button';
+import { Button } from '../Button/Button';
 import type { FormLayoutProps } from '../../types';
 
 export const FormLayout = ({

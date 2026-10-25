@@ -1,6 +1,6 @@
 import type { PostVariantProps } from '../../types.ts';
 import { formatDate } from '../../constants.ts';
-import { PostActions } from '../../postActions.tsx';
+import { PostActions } from '../../PostActions.tsx';
 
 export const SmallPost = ({ post, onOpen }: PostVariantProps) => (
    <article className="post post--small">

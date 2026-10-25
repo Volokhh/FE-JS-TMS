@@ -1,5 +1,5 @@
 import { POSTS } from '../constants';
-import { PostActions } from '../postActions';
+import { PostActions } from '../PostActions';
 import './pages.css';
 
 interface SelectedPostProps {

@@ -1,7 +1,7 @@
 import type { PostCardProps } from '../../types.ts';
-import { LargePost } from './postCardLarge';
-import { MediumPost } from './postCardMedium';
-import { SmallPost } from './postCardSmall';
+import { LargePost } from './PostCardLarge.tsx';
+import { MediumPost } from './PostCardMedium.tsx';
+import { SmallPost } from './PostCardSmall.tsx';
 import '../../postCard.css';
 
 export const PostCard = ({ post, variant, onOpen }: PostCardProps) => {

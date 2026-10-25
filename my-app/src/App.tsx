@@ -1,10 +1,10 @@
 
 import { useState } from 'react'
-import { Layout } from './components/layout/layout'
-import AllPosts from './pages/allPosts'
-import SelectedPost from './pages/selectedPost';
-import { SignIn } from './pages/signIn';
-import Success from './pages/success';
+import { Layout } from './components/Layout/Layout'
+import AllPosts from './Pages/AllPosts'
+import SelectedPost from './Pages/SelectedPost';
+import { SignIn } from './Pages/SignIn';
+import Success from './Pages/Success';
 
 type Page = 'all' | 'selected' | 'signIn' | 'success';
 

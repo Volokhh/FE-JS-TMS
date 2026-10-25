@@ -39,8 +39,8 @@ export type Props = {
    id: string;
    placeholder: string;
    disabled?: boolean;
-   value: string;
-   onChange: ChangeEventHandler<HTMLInputElement, HTMLInputElement>;
+   value?: string;
+   onChange?: ChangeEventHandler<HTMLInputElement, HTMLInputElement>;
    ref?: RefObject<HTMLInputElement | null>;
 };
 

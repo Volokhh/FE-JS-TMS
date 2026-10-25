@@ -7,8 +7,7 @@ const Success = ({ onGoHome }: { onGoHome: () => void }) => (
 
       <div className="card">
          <p className="card__text">
-            Email confirmed.<br />
-            Your registration is now completed
+            Login successful.
          </p>
          <Button
             onClick={onGoHome}

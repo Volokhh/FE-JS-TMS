@@ -5,7 +5,7 @@ import { Input } from '../components/Input/Input';
 import { FormLayout } from '../components/FormLayout/FormLayout';
 
 
-export const SignIn = ({ onSuccess }: { onSuccess: () => void }) => {
+export const SignIn = ({ onSuccess, onSignUp }: { onSuccess: () => void, onSignUp: () => void }) => {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
    const inputEmailRef = useRef<HTMLInputElement>(null);
@@ -23,11 +23,6 @@ export const SignIn = ({ onSuccess }: { onSuccess: () => void }) => {
       }
 
       onSuccess();
-
-      console.log({
-         email,
-         password,
-      });
    };
 
    return (
@@ -64,7 +59,7 @@ export const SignIn = ({ onSuccess }: { onSuccess: () => void }) => {
             additionalUI={<p className="container__link">Forgot password?</p>}
             footerUI={
                <p className="container__note">
-                  Don't have an account? <button onClick={() => alert('А нельзя пока')}>Sign Up</button>
+                  Don't have an account? <button onClick={onSignUp}>Sign Up</button>
                </p>
             }
             onClick={handleClick}

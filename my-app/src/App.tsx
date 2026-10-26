@@ -5,8 +5,9 @@ import AllPosts from './Pages/AllPosts'
 import SelectedPost from './Pages/SelectedPost';
 import { SignIn } from './Pages/SignIn';
 import Success from './Pages/Success';
+import { SignUp } from './Pages/SignUp';
 
-type Page = 'all' | 'selected' | 'signIn' | 'success';
+type Page = 'all' | 'selected' | 'signIn' | 'success' | 'signUp';
 
 const App = () => {
    const [page, setPage] = useState<Page>('all');
@@ -27,7 +28,13 @@ const App = () => {
                onBack={() => setPage('all')}
             />
          )}
-         {page === 'signIn' && <SignIn onSuccess={() => setPage('success')} />}
+         {page === 'signIn' && (
+            <SignIn
+               onSuccess={() => setPage('success')}
+               onSignUp={() => setPage('signUp')}
+            />
+         )}
+         {page === 'signUp' && <SignUp onSuccess={() => setPage('success')} />}
          {page === 'success' && <Success onGoHome={() => setPage('all')} />}
       </Layout>
    );
